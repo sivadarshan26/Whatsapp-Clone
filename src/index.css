@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-custom1 {
+    background-color: #1F2C33;
+  }
+
+.bg-custom2 {
+    background-color: rgb(31, 44, 51);
+}
+  
+.bg-custom3 {
+      background-color: rgb(16, 27, 33);
+    }
+ 
+/* In your CSS file or in your React component's style block */
+.circular-image {
+    width: 40px; /* Set the width */
+    height: 40px; /* Set the height */
+    border-radius: 50%; /* Make it circular */
+    overflow: hidden; /* Hide overflowing parts */
+  }
+  
+  .image2 img, .circular-image img {
+    width: 100%; /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+    object-fit: cover; /* Cover the container, cropping as needed */
+  }
+  
+  .search-icon {
+    color: rgba(255, 255, 255, 0.5); /* White with 50% transparency */
+  }
+
+  .custom-border {
+    border-color: rgba(255, 255, 255, 0.1); /* White with 50% transparency */
+  }
+  
+ 
