@@ -1,27 +1,27 @@
 import { useState, useEffect } from 'react';
-import Lottie from 'lottie-react';
-import animationData from './assets/icons/menu_animated.json';
-import random1 from './assets/images/random1.jpg';
-import random2 from './assets/images/random2.png';
-import random3 from './assets/images/random3.png';
 import profile from './assets/images/profile.jpg';
 import bg from './assets/images/bg.jpg'
 import { IoSearch, IoFilter } from "react-icons/io5";
-import { HiUserGroup, HiOutlineStatusOnline  } from "react-icons/hi";
+import { HiUserGroup, HiOutlineStatusOnline } from "react-icons/hi";
 import { GrChannel } from "react-icons/gr";
 import { LuMessageSquarePlus } from "react-icons/lu";
 import { SlOptionsVertical } from "react-icons/sl";
 import { PiVideoCameraFill } from "react-icons/pi";
 import { FaAngleDown } from "react-icons/fa6";
 import Profilediv from './components/profilediv';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ToggleButton from '@mui/material/ToggleButton';
 
 
-const ProfileComponent = () => {
+const App = () => {
   const [isClicked, setIsClicked] = useState(false);
-
-  useEffect(() => {
-    
-    const handleEscKey = (event) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [selected, setSelected] = useState(false);
+  const [filterClicked, setFilterClicked] = useState(false);
+ 
+  useEffect(() => { const handleEscKey = (event) => {
       if (event.key === 'Escape') {
         setIsClicked(false);
       }
@@ -34,7 +34,7 @@ const ProfileComponent = () => {
     };
   }, []);
 
-  const handleClick = () => {
+  const handleClick = (event) => {
     setIsClicked(!isClicked);
   };
 
@@ -44,8 +44,25 @@ const ProfileComponent = () => {
     }
   };
 
+  const open = Boolean(anchorEl);
+
+  const menuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleMenuItemClick = (event) => {
+    setIsClicked(!isClicked);
+    setAnchorEl(event.currentTarget);
+    setFilterClicked(true);
+    handleClose();
+  };
+
   return (
-    <div className='bg-gray-950 p-3 h-screen overflow-auto'>
+    <div className='bg-gray-950 p-3 h-full overflow-auto'>
       
       <div className="bg-gray-400 h-16 items-center flex  ">
 
@@ -61,7 +78,55 @@ const ProfileComponent = () => {
           <HiOutlineStatusOnline className='search-icon' size={25}/>
           <GrChannel className='search-icon' size={21}/>
           <LuMessageSquarePlus className='search-icon' size={23}/>
-          <SlOptionsVertical className='search-icon' size={20}/>
+
+          <Button
+            id="demo-positioned-button"
+            sx={{
+              width:'4px',
+              p:0,
+              marginLeft:'-10px',
+              marginRight:'-10px',
+            }}
+            aria-controls={open ? 'demo-positioned-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? 'true' : undefined}
+            onClick={menuClick}
+          >
+            <SlOptionsVertical className='search-icon p-0 m-0' size={20}/>
+          </Button>
+            
+
+          <Menu
+            id="demo-positioned-menu"
+            aria-labelledby="demo-positioned-button"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+              
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            PaperProps={{
+              style: {
+                backgroundColor: 'rgb(33, 46, 56)',
+              },
+            }}            
+          >
+            <MenuItem onClick={handleMenuItemClick}  style={{ color: 'rgba(255, 255, 255, 0.7)' }}>New Group</MenuItem>
+            <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight:100  }}>New Community</MenuItem>
+            <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight:100  }}>Archived</MenuItem>
+            <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight:100  }}>Starred Messages</MenuItem>
+            <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight:100  }}>Select Chats</MenuItem>
+            <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight:100  }}>Settings</MenuItem>
+            <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight:100 }}>Logout</MenuItem>
+            <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight:100  }}>Get WhatsApp For Windows</MenuItem>
+          </Menu>
+          
           </div>
 
         </div>
@@ -78,7 +143,10 @@ const ProfileComponent = () => {
               <FaAngleDown  className='text-gray-700 ml-1' size={15}/>
             </div>
           <IoSearch className='search-icon ml-1' size={20}/>
+
           <SlOptionsVertical className='search-icon' size={20}/>
+                    
+
           </div>
         </div>
       </div>
@@ -97,28 +165,56 @@ const ProfileComponent = () => {
                 className='bg-transparent pl-3 outline-none border-none text-white w-full'
             />
           </div>
-          <IoFilter className='search-icon ml-3 mt-1.5' size={25}/>
-        </div>
+          <div className='m-0 p-0'>
+            <ToggleButton
+                value="check"
+                style={{ marginLeft: 0, padding: 0 }}
+                selected={selected}
+                onChange={() => {
+                  setSelected(!selected);
+                  setFilterClicked(!filterClicked)
+              }}
+              >
+              {!filterClicked && 
+                <div className='p-1.5 ml-2 rounded-full'>
+                  <IoFilter className='search-icon  ' size={25} />
+                </div>
+              }
 
-        
-        <Profilediv/>
-        
-      </div>
-      
+              {filterClicked &&
+                <div className='p-1.5 ml-2 bg-green-500 rounded-full'>          
+                  <IoFilter className=' text-white rounded-full  ' size={25} />
+                </div>  
+              }
+
+            </ToggleButton>
+          </div>
+            
+          </div>
+
+          {filterClicked && 
+           <div className='h-20 ml-3 mr-10 items-center border-b custom-border flex'>
+           <p className='text-green-500 text-lg self-center'>Filtered by Unread</p>
+         </div>
+         }
+          <Profilediv/>
+          
+          </div>
+          
 
 
-      <div class="max-h-screen w-2/3 bg-custom3 flex items-center justify-center overflow-y-auto">
-        <img class="sticky max-h-screen w-full object-cover" src={bg} alt="bg" />
-      </div>
+          <div className="max-h-screen w-2/3 bg-custom3 flex items-center justify-center overflow-y-auto">
+          <img className="sticky max-h-screen w-full object-cover" src={bg} alt="bg" />
+          </div>
 
-      </div>
+          </div>
 
-      {isClicked && (
-        <div 
-          className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-75" 
-          onClick={handleBackgroundClick}>
-        
+          {isClicked && (
           <div 
+            className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-75" 
+            onClick={handleBackgroundClick}>
+          
+            <div 
             className="image2 bg-white rounded-md overflow-auto flex justify-center items-center" 
             style={{ width: '30vw', 
             height: '30vw', 
@@ -128,11 +224,12 @@ const ProfileComponent = () => {
               src={profile} 
               alt="Profile"  
               className="object-cover h-full" />
-          </div>
-        </div>   
-      )}
-    </div>
+            </div>
+          </div>   
+          )}
+
+     </div>
   );
 };
 
-export default ProfileComponent;
+export default App;
