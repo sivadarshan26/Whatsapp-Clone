@@ -8,6 +8,7 @@ const Chat = () => {
   const [message, setMessage] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [sentMessages, setSentMessages] = useState([]);
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
@@ -45,10 +46,14 @@ const Chat = () => {
     }
   };
 
+  const handleMicClick = () => {
+    setShowMessage(true);
+  };
+
   return (
     <>
       <div className='p-2 w-full min-h-dvh relative'>
-        <div className='flex justify-end'>
+        <div className='flex  justify-end'>
           <div className='text-right max-w-[80%] min-w-[40%] text-white mt-2 p-2 mb-2'>
             {/* Render each sent message in its own div */}
             {sentMessages.map((sentMessage, index) => {
@@ -80,9 +85,12 @@ const Chat = () => {
         </div>
       </div>
       <div className='p-2 bg-custom2 top-0 left-0 right-0 bottom-0 flex items-center'>
-        <BsEmojiSmile className='search-icon mr-2 cursor-pointer' size={25} />
+        <BsEmojiSmile 
+          className='search-icon mr-2 cursor-pointer' 
+          size={25}
+        />
         <AiOutlinePlus className='search-icon mr-2 cursor-pointer' size={25} />
-        <textarea
+        <input
           value={message}
           onChange={handleMessageChange}
           onFocus={handleFocus}
@@ -91,16 +99,39 @@ const Chat = () => {
           placeholder='Type a message'
           className='bg-customInput w-full h-[20px] min-h-11 max-h-16 rounded-md resize-none text-white border-none p-2 focus-visible:outline-none'
           cols={2}
-        ></textarea>
+        ></input>
         {message.length === 0 ? (
-          <IoMdMic className='search-icon ml-2 cursor-pointer' size={25} />
+          <IoMdMic onClick={handleMicClick} className='search-icon ml-2 cursor-pointer' size={25} />
         ) : (
           <MdSend className='search-icon ml-2 cursor-pointer' size={25} onClick={handleSend} />
         )}
       </div>
+      {showMessage && (
+        <div
+          className='fixed bg-black bg-opacity-70 top-0 left-0 right-0 bottom-0 flex items-center justify-center'
+          onClick={() => setShowMessage(false)}
+          style={{
+            opacity: showMessage ? 1 : 0,
+            transition: 'opacity 2s ease-in-out'
+          }}
+        >
+          <div className='bg-[#3b4a54] rounded-md text-[#d1d7db] p-4' style={{ width: '500px' }}>
+            <p className='text-xl pb-3'>Microphone Not Found</p>
+            <p className='text-xs text-[#d1d7db]'>
+              You can't record a Voice Message because it looks like your
+              computer doesn't have a microphone. Try connecting one or if you
+              have one connected, try restarting your browser.
+            </p>
+            <div className="flex justify-end">
+              <button className="bg-[#00A884] text-black rounded-full py-2 px-6 mt-12" onClick={() => setShowMessage(false)}>OK, got it</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
     </>
   );
-  
 };
 
 export default Chat;

@@ -125,7 +125,7 @@ const App = () => {
             <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight:100  }}>Select Chats</MenuItem>
             <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight:100  }}>Settings</MenuItem>
             <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight:100 }}>Logout</MenuItem>
-            <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight:100  }}>Get WhatsApp For Windows</MenuItem>
+            <MenuItem onClick={() => window.open('https://www.whatsapp.com/download', '_blank')} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight: 100 }}>Get WhatsApp For Windows</MenuItem>
           </Menu>
           
           </div>
