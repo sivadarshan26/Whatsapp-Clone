@@ -17,6 +17,10 @@
 .bg-custom4{
   background-color: rgb(33, 46, 56);
 }
+
+.bg-customInput{
+  background-color: rgb(40, 57, 65);
+}
  
 /* In your CSS file or in your React component's style block */
 .circular-image {
@@ -40,4 +44,15 @@
     border-color: rgba(255, 255, 255, 0.1); /* White with 50% transparency */
   }
   
- 
+  .customTextarea {
+    min-height: 20px !important;
+    padding: 8px;
+    
+  }
+  
+  .customTextarea:focus {
+    outline: none;
+    border: none; /* Optional, remove border change on focus */
+    box-shadow: none; /* Optional, remove shadow on focus */
+  }
+  

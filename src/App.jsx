@@ -9,6 +9,7 @@ import { SlOptionsVertical } from "react-icons/sl";
 import { PiVideoCameraFill } from "react-icons/pi";
 import { FaAngleDown } from "react-icons/fa6";
 import Profilediv from './components/profilediv';
+import Chat from './components/Chat';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -203,8 +204,8 @@ const App = () => {
           
 
 
-          <div className="max-h-screen w-2/3 bg-custom3 flex items-center justify-center overflow-y-auto">
-          <img className="sticky max-h-screen w-full object-cover" src={bg} alt="bg" />
+          <div className="max-h-screen w-2/3 bg-custom3 items-center justify-center overflow-y-auto">
+          <Chat/>
           </div>
 
           </div>
