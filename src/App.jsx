@@ -21,6 +21,7 @@ const App = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selected, setSelected] = useState(false);
   const [filterClicked, setFilterClicked] = useState(false);
+  
  
   useEffect(() => { const handleEscKey = (event) => {
       if (event.key === 'Escape') {
@@ -62,6 +63,14 @@ const App = () => {
     handleClose();
   };
 
+  const updateProfileImage = (newImage, name) => {
+    const element = document.getElementById('top right');
+    const imgElement = element.querySelector('img');
+    const nameElement = element.querySelector('p');
+    imgElement.src = newImage;
+    nameElement.textContent = name;
+  };
+
   return (
     <div className='bg-gray-950 p-3 h-full overflow-auto'>
       
@@ -70,7 +79,7 @@ const App = () => {
         <div className="basis-1/3 h-full bg-custom2 flex justify-between items-center p-2 border-r border-gray-700">
         
           {/* ############################### profile image ###############################*/}  
-          <div className="circular-image bg-purple-300 cursor-pointer " onClick={handleClick}>
+          <div  className="circular-image bg-purple-300 cursor-pointer " onClick={handleClick}>
             <img src={profile} alt="Profile" />
           </div>
 
@@ -132,10 +141,13 @@ const App = () => {
 
         </div>
 
-
+        {/* *********************right side top header*************************** */}
         <div className='basis-2/3 h-full justify-between items-center bg-custom2 flex p-2 '>
-          <div className="circular-image bg-purple-300 cursor-pointer " onClick={handleClick}>
-            <img src={profile} alt="Profile" />
+          <div id='top right' className='flex items-center' >
+            <div className="circular-image bg-purple-300 cursor-pointer " onClick={handleClick}>
+              <img alt="Profile" />
+            </div>
+            <p className='text-white text-xl ml-2'>dfsgs</p>
           </div>
 
           <div className='flex space-x-4 '>
@@ -198,7 +210,7 @@ const App = () => {
            <p className='text-green-500 text-lg self-center'>Filtered by Unread</p>
          </div>
          }
-          <Profilediv/>
+          <Profilediv  updateProfileImage={updateProfileImage}/>
           
           </div>
           
@@ -211,7 +223,7 @@ const App = () => {
           </div>
 
           {isClicked && (
-          <div 
+          <div id="full view"
             className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-75" 
             onClick={handleBackgroundClick}>
           
