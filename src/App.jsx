@@ -147,11 +147,11 @@ const App = () => {
             <div className="circular-image bg-purple-300 cursor-pointer " onClick={handleClick}>
               <img alt="Profile" />
             </div>
-            <p className='text-white text-xl ml-2'>dfsgs</p>
+            <p className='text-white text-xl ml-2'>Profile Name</p>
           </div>
 
-          <div className='flex space-x-4 '>
-            <div className='flex items-center'>
+          <div className='flex space-x-4 items-center  '>
+            <div className='flex items-center border border-gray-700 rounded-full px-2 py-1'>
               <PiVideoCameraFill className='text-gray-700 ml-1 mr-1.5' size={24}/>
               <FaAngleDown  className='text-gray-700 ml-1' size={15}/>
             </div>
