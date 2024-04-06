@@ -3,6 +3,7 @@ import { BsEmojiSmile } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { IoMdMic } from "react-icons/io";
 import { MdSend } from "react-icons/md";
+import bg from '../assets/images/bg.jpg';
 
 const Chat = () => {
   const [message, setMessage] = useState('');
@@ -52,7 +53,7 @@ const Chat = () => {
 
   return (
     <>
-      <div className='p-2 w-full min-h-dvh relative'>
+      <div className='p-2 w-full min-h-dvh relative ' style={{ backgroundImage: `url(${bg})` }}>
         <div className='flex  justify-end'>
           <div className='text-right max-w-[80%] min-w-[40%] text-white mt-2 p-2 mb-2'>
             {/* Render each sent message in its own div */}
