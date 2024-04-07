@@ -24,8 +24,12 @@ import { FaBell } from "react-icons/fa";
 import { PiTimer } from "react-icons/pi";
 import Switch from '@mui/material/Switch';
 import { IoMdLock } from "react-icons/io";
+import { BiBlock } from "react-icons/bi";
+import { BiSolidDislike } from "react-icons/bi";
+import { BiSolidTrashAlt } from "react-icons/bi";
 
-const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
+
 
 const App = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -36,6 +40,7 @@ const App = () => {
   const [profileImage, setProfileImage] = useState(profile);
   const [profileName, setProfileName] = useState('Profile Name');
   const [mainProfileImage, setMainProfileImage] = useState(profile);
+  
 
   useEffect(() => {
     const handleEscKey = (event) => {
@@ -85,13 +90,15 @@ const App = () => {
 
   const handleSideClick = () => {
     setIsDivOpen(!isDivOpen);
+    // const newName = isDivOpen ? 'Profile Name' : 'New Profile Name';
+    // setProfileName(newName);
   };
 
   return (
-    <div className='bg-gray-950 flex p-3'>
+    <div className='bg-gray-950 flex p-3 max-h-full'>
 
       <div className='grow'>
-        <div className='bg-gray-950  h-full overflow-auto'>
+        <div className='bg-gray-950  h-auto overflow-auto'>
 
           <div className="bg-gray-400 h-16 items-center flex  ">
 
@@ -161,7 +168,7 @@ const App = () => {
 
             <div className='grow h-full justify-between items-center bg-custom2 flex p-2 '>
               <div id='top right' className='flex items-center' >
-                <div className="circular-image bg-purple-300 cursor-pointer " onClick={handleClick}>
+                <div className="circular-image bg-purple-300 cursor-pointer " onClick={handleSideClick}>
                   <img src={profileImage} alt="Profile" />
                 </div>
                 <p className='text-white text-xl ml-2 cursor-pointer' onClick={handleSideClick}>{profileName}</p>
@@ -181,7 +188,7 @@ const App = () => {
 
           </div>
 
-          <div className='flex items-center bg-gray-300'>
+          <div className='parent flex items-center bg-gray-300'>
 
             <div className="h-screen basis-1/3 pt-2 p-3 relative border-r overflow-y-auto border-gray-700 bg-custom3">
 
@@ -232,7 +239,7 @@ const App = () => {
             </div>
 
 
-            <div className="max-h-screen grow bg-custom3 items-center justify-center overflow-y-auto">
+            <div className="child max-h-screen overflow-y-auto grow bg-custom3 items-center justify-center ">
               <Chat />
             </div>
 
@@ -263,17 +270,17 @@ const App = () => {
 
       {isDivOpen &&
 
-        <div className=' bg-gray-400 w-1/3 border-l border-gray-700'>
+        <div className='sticky   bg-gray-400 w-1/3 border-l border-gray-700'>
 
           <div className='h-16 bg-[#202c33] px-8 flex items-center'>
-            <CgClose className='search-icon' size={22} />
+            <CgClose className='search-icon cursor-pointer' size={22} onClick={handleSideClick}/>
             <p className='text-white text-lg ml-5'>Contact Info</p>
           </div>
-
-          <div className='bg-[#030712]'>
+          {/* ******sideclick********* */}
+          <div className='bg-[#030712] max-h-screen overflow-y-auto'>
             <div id="side" className='bg-[#111B21] p-10 mb-2 flex flex-col items-center justify-center'>
               <img className='rounded-full size-52' src={profileImage} alt="Profile" />
-              <p className='text-white mt-6 text-xl'></p>
+              <p className='text-white mt-6 text-xl'>{profileName}</p>
               <p className='search-icon mt-2'>+91 90009 90009</p>
             </div>
             <div className='bg-[#202c33] px-8 py-4 mb-2 flex flex-col'>
@@ -285,7 +292,7 @@ const App = () => {
                 <p className='search-icon '>Media, links and docs</p>
                 <div className='flex items-center'>
                   <p className='search-icon mr-2'>5</p>
-                  <LiaGreaterThanSolid className='search-icon' size={15} />
+                  <LiaGreaterThanSolid className='search-icon cursor-pointer' size={15} />
                 </div>
               </div>
 
@@ -302,7 +309,7 @@ const App = () => {
                   <p className='text-white ml-2'>Starred Messages</p>
                 </div>
                 <div className='flex items-center'>
-                  <LiaGreaterThanSolid className='search-icon' size={15} />
+                  <LiaGreaterThanSolid className='search-icon cursor-pointer' size={15} />
                 </div>
               </div>
 
@@ -312,7 +319,7 @@ const App = () => {
                   <p className='text-white ml-2'>Mute Notifications</p>
                 </div>
                 <div className='flex items-center'>
-                  <Switch {...label} />
+                  <Switch className="checked:bg-blue-500" />
                 </div>
               </div>
               <div className='flex justify-between'>
@@ -324,25 +331,42 @@ const App = () => {
                   </div>
                 </div>
                 <div className='mt-1.5'>
-                  <LiaGreaterThanSolid className='search-icon' size={15} />
+                  <LiaGreaterThanSolid className='search-icon cursor-pointer' size={15} />
                 </div>
               </div>
 
               <div className='flex justify-between'>
                 <div className=' flex'>
-                  <IoMdLock className='search-icon ' size={21} />
-                  <div className='ml-2' >
+                  <IoMdLock className='search-icon mt-1.5' size={18} />
+                  <div className='ml-1' >
                     <p className='text-white'>Encryption</p>
                     <p className='search-icon text-xs'>Messages are end-toendencrypted. Click to verify.</p>
                   </div>
                 </div>
                 <div className='flex mt-1.5 '>
-                  <LiaGreaterThanSolid className='search-icon' size={15} />
+                  <LiaGreaterThanSolid className='search-icon cursor-pointer' size={15} />
                 </div>
               </div>
               
             </div>
+          
+          <div className='mt-2 bg-[#202c33] pl-8 py-4 pr-4 flex flex-col space-y-4'>
+            <div className='flex items-center cursor-pointer'>
+              <BiBlock className='text-red-400' size={15} style={{ transform: 'scaleX(-1)' }} />
+              <p className='text-red-400 ml-2'> Block</p>
+            </div>
+            <div className='flex items-center cursor-pointer'>
+              <BiSolidDislike className='text-red-400' size={15}/>
+              <p className='text-red-400 ml-2'> Report</p>
+            </div>
+            <div className='flex items-center cursor-pointer'>
+              <BiSolidTrashAlt className='text-red-400 mt-10' size={15}/>
+              <p className='text-red-400 ml-2 mt-10'> Delete Chat</p>
+            </div>
           </div>
+          
+          </div>
+          
 
         </div>
       }

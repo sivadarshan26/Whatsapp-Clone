@@ -51,7 +51,7 @@ const Profilediv = ({ updateProfileImage }) => { // Accept updateProfileImage as
             className='w-12 h-12 rounded-full cursor-pointer'
             src={item.profile}
             alt="Profile"
-            onClick={() => handleClick(item.profile)}
+            // onClick={() => handleClick(item.profile)}
           />
           <div className='ml-3 mr-10 pb-2 w-full flex flex-col border-b custom-border cursor-pointer'>
             <p className='text-white text-xl'>{item.name}</p>
