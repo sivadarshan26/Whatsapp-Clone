@@ -19,6 +19,13 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ToggleButton from '@mui/material/ToggleButton';
+import { IoStar } from "react-icons/io5";
+import { FaBell } from "react-icons/fa";
+import { PiTimer } from "react-icons/pi";
+import Switch from '@mui/material/Switch';
+import { IoMdLock } from "react-icons/io";
+
+const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 const App = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -273,7 +280,7 @@ const App = () => {
               <p className='search-icon '>About</p>
               <p className='text-white'>Go to war against the man in the mirror & don't come back until you win!</p>
             </div>
-            <div className='bg-[#202c33] pl-8 py-4 flex flex-col'>
+            <div className='bg-[#202c33] pl-8 py-4 pr-4 flex flex-col'>
               <div className='flex justify-between'>
                 <p className='search-icon '>Media, links and docs</p>
                 <div className='flex items-center'>
@@ -286,6 +293,54 @@ const App = () => {
                 <div className='bg-yellow-500 size-20 mt-4 mr-4'></div>
                 <div className='bg-green-500 size-20 mt-4'></div>
               </div>
+            </div>
+            {/* starred messages */}
+            <div className='mt-2 bg-[#202c33] pl-8 py-4 pr-4 flex flex-col space-y-4'>
+              <div className='flex justify-between'>
+                <div className='items-center flex'>
+                  <IoStar className='search-icon' size={15} />
+                  <p className='text-white ml-2'>Starred Messages</p>
+                </div>
+                <div className='flex items-center'>
+                  <LiaGreaterThanSolid className='search-icon' size={15} />
+                </div>
+              </div>
+
+              <div className='flex justify-between'>
+                <div className='items-center flex'>
+                  <FaBell className='search-icon' size={15} />
+                  <p className='text-white ml-2'>Mute Notifications</p>
+                </div>
+                <div className='flex items-center'>
+                  <Switch {...label} />
+                </div>
+              </div>
+              <div className='flex justify-between'>
+                <div className='flex'>
+                  <PiTimer className='search-icon mt-1.5' size={15} />
+                  <div className='ml-2' >
+                  <p className='text-white'>Disapperaing Messages</p>
+                  <p className='search-icon text-xs'>Off</p>
+                  </div>
+                </div>
+                <div className='mt-1.5'>
+                  <LiaGreaterThanSolid className='search-icon' size={15} />
+                </div>
+              </div>
+
+              <div className='flex justify-between'>
+                <div className=' flex'>
+                  <IoMdLock className='search-icon ' size={21} />
+                  <div className='ml-2' >
+                    <p className='text-white'>Encryption</p>
+                    <p className='search-icon text-xs'>Messages are end-toendencrypted. Click to verify.</p>
+                  </div>
+                </div>
+                <div className='flex mt-1.5 '>
+                  <LiaGreaterThanSolid className='search-icon' size={15} />
+                </div>
+              </div>
+              
             </div>
           </div>
 
