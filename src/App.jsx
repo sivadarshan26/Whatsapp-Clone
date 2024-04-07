@@ -40,7 +40,7 @@ const App = () => {
   const [profileImage, setProfileImage] = useState(profile);
   const [profileName, setProfileName] = useState('Profile Name');
   const [mainProfileImage, setMainProfileImage] = useState(profile);
-  
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     const handleEscKey = (event) => {
@@ -94,8 +94,12 @@ const App = () => {
     // setProfileName(newName);
   };
 
+  const VideoDiv = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <div className='bg-gray-950 flex p-3 max-h-full'>
+    <div className='bg-gray-950 flex p-3 max-h-full overflow-hidden'>
 
       <div className='grow'>
         <div className='bg-gray-950  h-auto overflow-auto'>
@@ -175,17 +179,29 @@ const App = () => {
               </div>
 
               <div className='flex space-x-4 items-center'>
-                <div className='flex items-center border border-gray-700 rounded-full px-2 py-1'>
+                <div className='flex items-center border border-gray-700 rounded-full px-2 py-1' onClick={VideoDiv}>
                   <PiVideoCameraFill className='text-gray-700 ml-1 mr-1.5' size={24} />
                   <FaAngleDown className='text-gray-700 ml-1' size={15} />
                 </div>
                 <IoSearch className='search-icon ml-1' size={20} />
                 <SlOptionsVertical className='search-icon' size={20} />
-
+                {isExpanded && (
+              <div className='flex bg-gray-600 absolute z-50 p-5 mt-32 right-64 space-x-4 rounded-md'>
+                <div>
+                <p className='text-white text-xl'>Make calls with the Windows app</p>
+                <p className='search-icon'>Download WhatsApp for Windows to strat making calls.</p>
+                </div>
+                <div className='ml-4 flex items-center '>
+                  <p className='bg-green-500 px-4 py-2 rounded-full'>Get the app</p>
+                </div>
 
               </div>
-            </div>
+            )}
 
+              </div>
+              
+            </div>
+            
           </div>
 
           <div className='parent flex items-center bg-gray-300'>
@@ -297,8 +313,8 @@ const App = () => {
               </div>
 
               <div className='flex'>
-                <div className='bg-yellow-500 size-20 mt-4 mr-4'></div>
-                <div className='bg-green-500 size-20 mt-4'></div>
+                <div className='bg-yellow-500 size-20 mt-4 mr-4 rounded-md hover:bg-yellow-600 cursor-pointer'></div>
+                <div className='bg-green-500 size-20 mt-4 rounded-md hover:bg-green-600 cursor-pointer'></div>
               </div>
             </div>
             {/* starred messages */}
@@ -371,6 +387,8 @@ const App = () => {
         </div>
       }
 
+      
+      
     </div>
   );
 };
