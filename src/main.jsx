@@ -4,6 +4,7 @@ import {  createBrowserRouter,  RouterProvider,} from "react-router-dom";
 import App from './App.jsx'
 import './index.css'
 import Chat from './components/Chat.jsx'
+import Side from './components/Side.jsx'
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/chat",
     element: <Chat />,
+  },
+  {
+    path: "/Side",
+    element: <Side />,
   },
 ]);
 
