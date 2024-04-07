@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .bg-custom1 {
     background-color: #1F2C33;
   }
@@ -61,21 +62,20 @@
 
   /*scroll bar*/
 ::-webkit-scrollbar {
-  width: 10px; /* Width of the scrollbar */
+  width: 5px; /* Width of the scrollbar */
   /* background-color: transparent; */ /* This line is unnecessary */
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background-color: white; /* Color of the scrollbar handle */
-  opacity: 0.1;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px; /* Rounded corners */
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: white;
-  opacity: 0.5;
+  background-color: rgba(34,46,53, 0.5);
+  
 }
 
 /* Define scrollbar track */
@@ -93,7 +93,11 @@
   background: yellow; /* Color of the scrollbar grip */
 }
 
-/* Define scrollbar buttons */
-::-webkit-scrollbar-button {
-  background: #ccc; /* Color of the scrollbar buttons */
+/* ::-webkit-scrollbar-button:start:decrement {
+  background: url("data:image/svg+xml,%3Csvg fill='rgba(255, 255, 255, 0.5)' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0L0 12h8.97L7.97 20 20 8h-8.97L12.03 0z'/%3E%3C/svg%3E");
 }
+
+/* Down button */
+/* ::-webkit-scrollbar-button:end:increment { */
+  /* background: url("data:image/svg+xml,%3Csvg fill='rgba(255, 255, 255, 0.5)' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M0 0h8.97l2.03 8H20L10 20l-1.97-8H0V0z'/%3E%3C/svg%3E"); */
+/* } */ 

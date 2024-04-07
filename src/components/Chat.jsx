@@ -53,6 +53,7 @@ const Chat = () => {
 
   return (
     <>
+    <div>    
       <div className='p-2 w-full min-h-dvh relative ' style={{ backgroundImage: `url(${bg})` }}>
         <div className='flex overflow-y-auto justify-end'>
           <div className='text-right max-w-[80%] min-w-[40%] text-white mt-2 p-2 mb-2'>
@@ -85,7 +86,8 @@ const Chat = () => {
           </div>
         </div>
       </div>
-      <div id="bottom" className='bottom p-2 bg-custom2 top-0 left-0 right-0 bottom-0 flex items-center'>
+     </div> 
+      <div id="bottom" className='sticky p-2 bg-custom2 top-0 left-0 right-0 bottom-0 flex items-center overflow-hidden'>
         <BsEmojiSmile 
           className='search-icon mr-2 cursor-pointer' 
           size={25}
