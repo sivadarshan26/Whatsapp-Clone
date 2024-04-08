@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import random1 from '../assets/images/random1.jpg';
-import random2 from '../assets/images/random2.png';
-import random3 from '../assets/images/random3.png';
+import random1 from '../assets/images/40523.jpg';
+import random2 from '../assets/images/40639.jpg';
+import random3 from '../assets/images/50955.jpg';
 
 const profiledata = [
-  { name: 'Harish Kumar', profile: random1 },
-  { name: 'Dhanush Kumar', profile: random2 },
-  { name: 'Rathish', profile: random3 }
+  { name: 'Nathan Drake', profile: random1 },
+  { name: 'Jane Smith', profile: random2 },
+  { name: 'Joe Bloggs', profile: random3 }
 ];
 
 const Profilediv = ({ updateProfileImage }) => { // Accept updateProfileImage as prop

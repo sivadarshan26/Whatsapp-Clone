@@ -1,7 +1,7 @@
 // App.js
 
 import React, { useState, useEffect } from 'react';
-import profile from './assets/images/profile.jpg';
+import profile from './assets/images/42780.jpg';
 import bg from './assets/images/bg.jpg';
 import { IoSearch, IoFilter } from "react-icons/io5";
 import { HiUserGroup, HiOutlineStatusOnline } from "react-icons/hi";
