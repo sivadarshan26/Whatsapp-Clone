@@ -1,7 +1,7 @@
 // Side.jsx
 import React, { useState } from 'react';
 import { CgClose } from "react-icons/cg";
-import profile from "../assets/images/profile.jpg";
+import profile from "../assets/images/42780.jpg";
 import Profilediv from "../components/Profilediv";
 
 const Side = () => {

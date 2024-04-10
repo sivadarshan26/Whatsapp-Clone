@@ -185,7 +185,7 @@ const App = () => {
                 </div>
                 <IoSearch className='search-icon ml-1' size={20} />
                 <SlOptionsVertical className='search-icon' size={20} />
-                {isExpanded && (
+                {/* {isExpanded && (
               <div className='flex bg-gray-600 absolute z-50 p-5 mt-32 right-64 space-x-4 rounded-md'>
                 <div>
                 <p className='text-white text-xl'>Make calls with the Windows app</p>
@@ -196,7 +196,7 @@ const App = () => {
                 </div>
 
               </div>
-            )}
+            )} */}
 
               </div>
               
@@ -313,8 +313,8 @@ const App = () => {
               </div>
 
               <div className='flex'>
-                <div className='bg-yellow-500 size-20 mt-4 mr-4 rounded-md hover:bg-yellow-600 cursor-pointer'></div>
-                <div className='bg-green-500 size-20 mt-4 rounded-md hover:bg-green-600 cursor-pointer'></div>
+                <div className='bg-yellow-500 size-20 mt-4 mr-4 rounded-md hover:bg-gradient-to-b from-yellow-500 to-black  cursor-pointer'></div>
+                <div className='bg-green-500 size-20 mt-4 rounded-md hover:hover:bg-gradient-to-b from-green-500 to-black  cursor-pointer'></div>
               </div>
             </div>
             {/* starred messages */}
