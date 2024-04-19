@@ -32,6 +32,7 @@ import { BsChatDots } from "react-icons/bs";
 import { PiBracketsRoundDuotone } from "react-icons/pi";
 import { AiOutlineStar } from "react-icons/ai";
 import { IoSettingsOutline } from "react-icons/io5";
+import { BiSolidPencil } from "react-icons/bi";
 
 
 
@@ -179,12 +180,13 @@ const App = () => {
                   }}
                 >
                   <MenuItem onClick={handleMenuItemClick} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>New Group</MenuItem>
-                  <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight: 100 }}>New Community</MenuItem>
+                  {/* <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight: 100 }}>New Community</MenuItem> */}
                   <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight: 100 }}>Archived</MenuItem>
-                  <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight: 100 }}>Starred Messages</MenuItem>
+                  {/* <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight: 100 }}>Starred Messages</MenuItem> */}
                   <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight: 100 }}>Select Chats</MenuItem>
-                  <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight: 100 }}>Settings</MenuItem>
+                  {/* <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight: 100 }}>Settings</MenuItem> */}
                   <MenuItem onClick={handleClose} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight: 100 }}>Logout</MenuItem>
+                  <hr className=' border-b-1 my-2 border-gray-700'/>
                   <MenuItem onClick={() => window.open('https://www.whatsapp.com/download', '_blank')} style={{ color: 'rgba(255, 255, 255, 0.7)', fontWeight: 100 }}>Get WhatsApp For Windows</MenuItem>
                 </Menu>
 
@@ -272,11 +274,29 @@ const App = () => {
                   <p className='text-green-500 text-lg self-center'>Filtered by Unread</p>
                 </div>
               }
-              <Profilediv updateProfileImage={updateProfileInfo} profileImage={profileImage} />
+
+              {isClicked ? (
+                <Profilediv updateProfileImage={updateProfileInfo} profileImage={profileImage} />
+              ) : (
+                <div className='flex flex-col items-center'>
+                  <p className='pl-1 pt-2 text-[22px] self-start text-white font-bold'>Profile</p>
+                  <div id='' className="rounded-full bg-purple-300 cursor-pointer mt-4 mb-4" onClick={handleClick}>
+                    <img src={mainProfileImage} alt="Profile" className='rounded-full' style={{ width: '200px', height: '200px' }} />
+                  </div>
+                  
+                  <p className='font-[14px] text-[#008069] self-start'>Your name</p>
+                  <div className='flex w-full justify-between'>
+                    <p className='font-[16px] font-thin self-start text-[#d1d7db]'>darshan ❤</p>
+                    <BiSolidPencil className='search-icon' size={16}/>
+                  </div>
+                  <p className='font-[14px] text-gray-400 text-sm mt-4 line'>
+                    This is not your username or PIN. This name will be visible to your WhatsApp contacts.
+                  </p>
+                  <p className='font-[14px] text-[#008069] self-start mt-5'>About</p>
+                  <p className='font-[16px] font-thin self-start text-[#d1d7db] mt-4'>If you want peace , prepare for war !</p>
+                </div>
+              )}
   
-              
-
-
             </div>
 
 
@@ -286,7 +306,7 @@ const App = () => {
 
           </div>
 
-          {isClicked && (
+          {/* {isClicked && (
             <div id="full view"
               className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-75"
               onClick={handleBackgroundClick}>
@@ -304,7 +324,7 @@ const App = () => {
                   className="object-cover h-full" />
               </div>
             </div>
-          )}
+          )} */}
 
         </div>
       </div>
