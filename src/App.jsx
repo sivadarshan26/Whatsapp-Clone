@@ -27,7 +27,11 @@ import { IoMdLock } from "react-icons/io";
 import { BiBlock } from "react-icons/bi";
 import { BiSolidDislike } from "react-icons/bi";
 import { BiSolidTrashAlt } from "react-icons/bi";
-
+import { BsFillChatLeftTextFill } from "react-icons/bs";
+import { BsChatDots } from "react-icons/bs";
+import { PiBracketsRoundDuotone } from "react-icons/pi";
+import { AiOutlineStar } from "react-icons/ai";
+import { IoSettingsOutline } from "react-icons/io5";
 
 
 
@@ -99,23 +103,41 @@ const App = () => {
   };
 
   return (
-    <div className='bg-gray-950 flex p-3 max-h-full overflow-hidden'>
+    <div className='bg-gray-950 flex p-3 max-h-full overflow-hidden '>
+      <div className='w-[54px] h-auto bg-custom2 pt-4 flex flex-col  items-center border-r border-gray-700'>
+        <div className='flex-row justify-center'>
+            <BsFillChatLeftTextFill className='search-icon' size={22}/>
+            <HiUserGroup className='search-icon mt-5' size={24} />
+            <BsChatDots className='search-icon mt-5' size={24} />
+            <PiBracketsRoundDuotone className='search-icon mt-5' size={26} />
+            <hr className=' mt-5 border-b-[0.5px] border-gray-500'/>
+            <AiOutlineStar className='search-icon mt-5' size={26} />
+        </div>  
+        <div id='bottom' className='mt-auto flex flex-col items-center'>
+            <IoSettingsOutline className='search-icon mt-4 mb-4' size={26} />
+            <div id='a' className="rounded-full bg-purple-300 cursor-pointer mb-4" onClick={handleClick}>
+                <img src={mainProfileImage} alt="Profile" className='rounded-full' style={{ width: '32px', height: '32px' }} />
+            </div>
+        </div>
+
+    </div>
+
 
       <div className='grow'>
         <div className='bg-gray-950  h-auto overflow-auto'>
 
           <div className="bg-gray-400 h-16 items-center flex  ">
 
-            <div className="basis-1/3 h-full bg-custom2 flex justify-between items-center p-2 border-r border-gray-700">
+            <div className="basis-1/3 h-full bg-custom3 flex justify-between items-center p-2 border-r border-gray-700">
 
-              <div id='a' className="circular-image bg-purple-300 cursor-pointer " onClick={handleClick}>
-                <img src={mainProfileImage} alt="Profile" />
+              <div >
+                <h6 className='ml-2 text-[22px] text-white font-bold'>Chats</h6>
               </div>
 
               <div className='flex space-x-4 '>
-                <HiUserGroup className='search-icon' size={21} />
-                <HiOutlineStatusOnline className='search-icon' size={25} />
-                <GrChannel className='search-icon' size={21} />
+                {/* <HiUserGroup className='search-icon' size={21} /> */}
+                {/* <HiOutlineStatusOnline className='search-icon' size={25} /> */}
+                {/* <GrChannel className='search-icon' size={21} /> */}
                 <LuMessageSquarePlus className='search-icon' size={23} />
 
                 <Button
@@ -251,6 +273,9 @@ const App = () => {
                 </div>
               }
               <Profilediv updateProfileImage={updateProfileInfo} profileImage={profileImage} />
+  
+              
+
 
             </div>
 

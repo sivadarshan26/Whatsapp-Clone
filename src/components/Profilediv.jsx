@@ -80,6 +80,8 @@ const Profilediv = ({ updateProfileImage }) => { // Accept updateProfileImage as
           </div>
         </div>
       )}
+
+
     </div>
   );
 };
